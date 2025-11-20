@@ -1,9 +1,25 @@
-const express = require("express");
+import express from "express";
+import dotenv from "dotenv";
+
+import authRoutes from "./routes/auth.routes.js";
+import connectToMongoDB from "./db/connectToMongoDB.js";
+
+dotenv.config();
 
 const app = express();
+
+const PORT = process.env.PORT || 5000;
+
+// obtener datos en formato JSON desde el body de las solicitudes HTTP
+app.use(express.json());
+
+app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
     res.send("Servidor en ejecución");
 });
 
-app.listen(5000, () => console.log("Servidor en ejecución por el puerto 5000"));
+app.listen(PORT, () => {
+    connectToMongoDB();
+    console.log(`Servidor en ejecución por el puerto ${PORT}`);
+});
