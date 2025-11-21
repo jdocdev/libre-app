@@ -5,7 +5,7 @@ import Home from "./pages/home/Home.jsx";
 import ProductDetail from "./pages/ProductDetail/ProductDetail.jsx";
 
 function App() {
-    return <ProductDetail />;
+    return <Home />;
 }
 
 export default App;
