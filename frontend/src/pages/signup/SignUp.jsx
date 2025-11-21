@@ -1,5 +1,5 @@
 import React from "react";
-import AuthHeader from "../../components/AuthHeader";
+import AuthHeader from "../../components/Headers/AuthHeader";
 
 const SignUp = () => {
     return (

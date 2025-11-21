@@ -1,5 +1,5 @@
 import React from "react";
-import SearchHeader from "../../components/SearchHeader";
+import SearchHeader from "../../components/Headers/Header";
 
 const Home = () => {
     return (
