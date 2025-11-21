@@ -6,10 +6,12 @@ export default {
     theme: {
         extend: {
             colors: {
-                'azulmeli': '#3483FA', 
-                'azulmeli-dark': '#2968C8', 
-                'azulmeli-light': '#ECF3FC',
-            }
+                azulmeli: "#3483FA",
+                "azulmeli-dark": "#2968C8",
+                "azulmeli-darker": "#303070",
+                "azulmeli-light": "#ECF3FC",
+                amarillomeli: "#FFE600",
+            },
         },
     },
     plugins: [daisyui],
