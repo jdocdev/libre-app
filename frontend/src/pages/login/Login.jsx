@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import AuthHeader from "../../components/Headers/AuthHeader";
 
 const Login = () => {
@@ -47,12 +48,12 @@ const Login = () => {
                                 </button>
                             </div>
 
-                            <a
-                                href="#"
-                                className="btn btn-block bg-white btn-md mt-4 shadow-none border border-azulmeli text-azulmeli hover:bg-azulmeli-light"
+                            <Link
+                                to={"/signup"}
+                                className="btn btn-block bg-white btn-md mt-4 shadow-none border border-none text-azulmeli hover:bg-azulmeli-light"
                             >
                                 Crear cuenta
-                            </a>
+                            </Link>
                         </form>
                     </div>
                 </div>
