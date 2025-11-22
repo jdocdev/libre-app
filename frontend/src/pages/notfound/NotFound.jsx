@@ -114,7 +114,7 @@ const NotFound = ({ authUser, setAuthUser }) => {
                 </p>
 
                 <a
-                    href="/"
+                    href="/products"
                     className="mt-6 px-6 py-2 bg-none text-azulmeli rounded-md hover:bg-azulmeli-light transition"
                 >
                     ir a la pagina principal

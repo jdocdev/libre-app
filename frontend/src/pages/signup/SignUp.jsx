@@ -22,7 +22,7 @@ const SignUp = ({ setAuthUser }) => {
 
         if (newUser) {
             setAuthUser(newUser);
-            navigate("/");
+            navigate("/products");
         }
     };
 

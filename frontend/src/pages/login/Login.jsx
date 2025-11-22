@@ -18,7 +18,7 @@ const Login = ({ setAuthUser }) => {
 
         if (userData) {
             setAuthUser(userData);
-            navigate("/");
+            navigate("/products");
         }
     };
 

@@ -24,13 +24,15 @@ function App() {
         }
     }, [authUser]);
 
-    console.log("Usuario autenticado:", authUser);
+    // console.log("Usuario autenticado:", authUser);
 
     return (
         <>
             <Routes>
+                <Route path="/" element={<Navigate to="/products" replace />} />
+
                 <Route
-                    path="/"
+                    path="/products"
                     element={
                         <Products
                             authUser={authUser}
@@ -43,7 +45,7 @@ function App() {
                     path="/login"
                     element={
                         authUser ? (
-                            <Navigate to="/" />
+                            <Navigate to="/products" />
                         ) : (
                             <Login setAuthUser={setAuthUser} />
                         )
@@ -54,7 +56,7 @@ function App() {
                     path="/signup"
                     element={
                         authUser ? (
-                            <Navigate to="/" />
+                            <Navigate to="/products" />
                         ) : (
                             <SignUp setAuthUser={setAuthUser} />
                         )
