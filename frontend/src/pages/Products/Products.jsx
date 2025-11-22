@@ -1,7 +1,7 @@
 import React from "react";
 import SearchHeader from "../../components/Headers/Header";
 
-const Home = ({ authUser, setAuthUser }) => {
+const Products = ({ authUser, setAuthUser }) => {
     return (
         <div className="min-h-screen flex flex-col">
             <SearchHeader authUser={authUser} setAuthUser={setAuthUser} />
@@ -357,4 +357,4 @@ const Home = ({ authUser, setAuthUser }) => {
     );
 };
 
-export default Home;
+export default Products;
