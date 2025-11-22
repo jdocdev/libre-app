@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon backend/server.js"
+    "server": "nodemon backend/server.js",
+    "dev": "concurrently \"npm run server\" \"npm --prefix frontend run dev\""
   },
   "type": "module",
   "keywords": [],
@@ -27,9 +28,12 @@
     "mongoose": "Mapeador de objetos para MongoDB"
   },
   "devDependencies": {
+    "concurrently": "^9.1.0",
     "nodemon": "^3.1.11"
   },
   "_devdependenciesdescripcion": {
+    "concurrently": "Librería para ejecutar múltiples comandos npm simultáneamente",
     "nodemon": "Librería de desarrollo para hotreload del backend"
+
   }
 }
