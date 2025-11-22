@@ -45,14 +45,14 @@ const useSignup = () => {
                 return;
             }
 
-            if(data.error){
+            if (data.error) {
                 throw new Error(data.error);
             }
-            
-            // localStorage - Sin Context - Sin Zustand
 
+            // localStorage para mantener la sesión iniciada
+            localStorage.setItem("user", JSON.stringify(data));
 
-
+            return data;
         } catch (error) {
             toast.error(error.message || "Error al crear la cuenta.");
         } finally {
@@ -80,8 +80,6 @@ function handleInputErrors({
         toast.error("Por favor, completa todos los campos.");
         return false;
     }
-
-    if( usuario)
 
     if (contrasena !== confirmarContrasena) {
         toast.error("Las contraseñas no coinciden.");
