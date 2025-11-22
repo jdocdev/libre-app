@@ -3,6 +3,8 @@ import bcrypt from "bcryptjs";
 import User from "../models/user.model.js";
 import generateTokenAndSetCookie from "../utils/generateToken.js";
 
+import { passwordRegex } from "../utils/validators.js";
+
 export const signup = async (req, res) => {
     try {
         const {
@@ -19,6 +21,12 @@ export const signup = async (req, res) => {
             return res
                 .status(400)
                 .json({ error: "Las contraseñas no coinciden" });
+        }
+
+        if (!passwordRegex.test(contrasena)) {
+            return res.status(400).json({
+                error: "La contraseña debe tener al menos 8 caracteres, incluir mayúsculas, minúsculas, números y un símbolo.",
+            });
         }
 
         const user = await User.findOne({ usuario });

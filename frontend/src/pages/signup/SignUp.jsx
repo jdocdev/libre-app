@@ -1,8 +1,25 @@
-import React from "react";
+import {React, useState} from "react";
 import { Link } from "react-router-dom";
 import AuthHeader from "../../components/Headers/AuthHeader";
+import useSignup from "../../hooks/useSignup";
 
 const SignUp = () => {
+
+    const [inputs, setInputs] = useState({
+        nombre: "",
+        apellido: "",
+        usuario: "",
+        contrasena: "",
+        confirmarContrasena: ""
+    });
+
+    const {loading, signup} = useSignup();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await signup(inputs);
+    };
+
     return (
         <div className="min-h-screen flex flex-col">
             <AuthHeader />
@@ -15,69 +32,84 @@ const SignUp = () => {
                     </div>
 
                     <div className="w-full p-8 rounded-lg bg-white border border-gray-300">
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <div>
-                                <label className="label p-2">
+                                <label className="label p-2" htmlFor="nombre">
                                     <span className="text-sm label-text text-gray-700">
                                         Nombre
                                     </span>
                                 </label>
                                 <input
+                                    id="nombre"
                                     type="text"
                                     placeholder="Ingresa tu nombre"
                                     className="w-full text-sm input input-bordered border-gray-300 h-12 focus:outline-none focus:ring-0 focus:border-azulmeli"
+                                    value={inputs.nombre}
+                                    onChange={(e) => setInputs({...inputs, nombre: e.target.value})}
                                 />
                             </div>
 
                             <div>
-                                <label className="label p-2">
+                                <label className="label p-2" htmlFor="apellido">
                                     <span className="text-sm label-text text-gray-700">
                                         Apellido
                                     </span>
                                 </label>
                                 <input
+                                    id="apellido"
                                     type="text"
                                     placeholder="Ingresa tu apellido"
                                     className="w-full input input-bordered border-gray-300 h-12 focus:outline-none focus:ring-0 focus:border-azulmeli"
+                                    value={inputs.apellido}
+                                    onChange={(e) => setInputs({...inputs, apellido: e.target.value})}
                                 />
                             </div>
 
                             <div>
-                                <label className="label p-2">
+                                <label className="label p-2" htmlFor="usuario">
                                     <span className="text-sm label-text text-gray-700">
                                         Usuario
                                     </span>
                                 </label>
                                 <input
+                                    id="usuario"
                                     type="text"
                                     placeholder="Elige tu usuario"
                                     className="w-full text-sm input input-bordered border-gray-300 h-12 focus:outline-none focus:ring-0 focus:border-azulmeli"
+                                    value={inputs.usuario}
+                                    onChange={(e) => setInputs({...inputs, usuario: e.target.value})}
                                 />
                             </div>
 
                             <div>
-                                <label className="label p-2">
+                                <label className="label p-2" htmlFor="contrasena">
                                     <span className="text-sm label-text text-gray-700">
                                         Contraseña
                                     </span>
                                 </label>
                                 <input
+                                    id="contrasena"
                                     type="password"
                                     placeholder="Crea una contraseña"
                                     className="w-full text-sm input input-bordered border-gray-300 h-12 focus:outline-none focus:ring-0 focus:border-azulmeli"
+                                    value={inputs.contrasena}
+                                    onChange={(e) => setInputs({...inputs, contrasena: e.target.value})}
                                 />
                             </div>
 
                             <div>
-                                <label className="label p-2">
+                                <label className="label p-2" htmlFor="confirmarContrasena">
                                     <span className="text-sm label-text text-gray-700">
                                         Confirmar Contraseña
                                     </span>
                                 </label>
                                 <input
+                                    id="confirmarContrasena"
                                     type="password"
                                     placeholder="Confirma tu contraseña"
                                     className="w-full text-sm input input-bordered border-gray-300 h-12 focus:outline-none focus:ring-0 focus:border-azulmeli"
+                                    value={inputs.confirmarContrasena}
+                                    onChange={(e) => setInputs({...inputs, confirmarContrasena: e.target.value})}
                                 />
                             </div>
 
