@@ -1,6 +1,6 @@
 import "./App.css";
 import { Route, Routes, Navigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { Toaster } from "react-hot-toast";
 
@@ -15,6 +15,14 @@ function App() {
     const [authUser, setAuthUser] = useState(
         () => JSON.parse(localStorage.getItem("user")) || null
     );
+
+    // Precargar imagen del avatar para cachearlo
+    useEffect(() => {
+        if (authUser?.imagenUsuario) {
+            const img = new Image();
+            img.src = authUser.imagenUsuario;
+        }
+    }, [authUser]);
 
     console.log("Usuario autenticado:", authUser);
 
@@ -58,7 +66,15 @@ function App() {
                     element={<ProductDetail authUser={authUser} />}
                 />
 
-                <Route path="*" element={<NotFound authUser={authUser} setAuthUser={setAuthUser} />} />
+                <Route
+                    path="*"
+                    element={
+                        <NotFound
+                            authUser={authUser}
+                            setAuthUser={setAuthUser}
+                        />
+                    }
+                />
             </Routes>
 
             <Toaster />

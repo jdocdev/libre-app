@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AuthHeader from "../../components/Headers/AuthHeader";
+import AuthHeader from "../../components/headers/AuthHeader";
 import useSignup from "../../hooks/useSignup";
 
 const SignUp = ({ setAuthUser }) => {

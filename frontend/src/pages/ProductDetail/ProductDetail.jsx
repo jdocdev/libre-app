@@ -1,5 +1,5 @@
 import React from "react";
-import SearchHeader from "../../components/Headers/Header";
+import SearchHeader from "../../components/headers/Header";
 
 const ProductDetail = () => {
     return (

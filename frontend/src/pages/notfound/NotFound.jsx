@@ -1,4 +1,4 @@
-import Header from "../../components/Headers/Header";
+import Header from "../../components/headers/Header";
 
 const NotFound = ({ authUser, setAuthUser }) => {
     return (

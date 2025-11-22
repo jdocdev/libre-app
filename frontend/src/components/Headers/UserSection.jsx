@@ -1,9 +1,11 @@
-import React from "react";
+import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import useLogout from "../../hooks/useLogout";
 
 const UserSection = ({ authUser, setAuthUser }) => {
     const { logout, loading } = useLogout(setAuthUser);
+
+    const [loadingAvatar, setLoadingAvatar] = useState(true);
 
     return (
         <div className="flex items-center gap-4 justify-end flex-shrink-0">
@@ -37,14 +39,21 @@ const UserSection = ({ authUser, setAuthUser }) => {
                         </button>
                     </div>
 
-                    <div className="avatar">
-                        <div className="sm:w-12 w-11 rounded-full border border-white/50">
+                    <div className="avatar relative">
+                        <div className="sm:w-12 w-11 rounded-full border border-white/50 relative">
+                            {loadingAvatar && (
+                                <div className="absolute inset-0 flex items-center justify-center bg-gray-200 rounded-full">
+                                    <span className="loading loading-spinner loading-sm"></span>
+                                </div>
+                            )}
                             <img
                                 src={
                                     authUser.imagenUsuario ||
                                     "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
                                 }
                                 alt="Avatar del usuario"
+                                onLoad={() => setLoadingAvatar(false)}
+                                onError={() => setLoadingAvatar(false)}
                             />
                         </div>
                     </div>
