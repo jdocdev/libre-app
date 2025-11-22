@@ -4,10 +4,11 @@ import { useState } from "react";
 
 import { Toaster } from "react-hot-toast";
 
-import Products from "./pages/Products/Products.jsx";
+import Products from "./pages/products/Products.jsx";
 import Login from "./pages/login/login.jsx";
 import SignUp from "./pages/signup/SignUp.jsx";
-import ProductDetail from "./pages/productDetail/ProductDetail.jsx";
+import ProductDetail from "./pages/productdetail/ProductDetail.jsx";
+import NotFound from "./pages/notfound/NotFound.jsx";
 
 function App() {
     // Cargar usuario desde localStorage al iniciar
@@ -56,6 +57,8 @@ function App() {
                     path="/product/:id"
                     element={<ProductDetail authUser={authUser} />}
                 />
+
+                <Route path="*" element={<NotFound authUser={authUser} setAuthUser={setAuthUser} />} />
             </Routes>
 
             <Toaster />
