@@ -1,27 +1,29 @@
-import React from "react";
-import SearchHeader from "../../components/headers/Header";
+import { React, useState } from "react";
+import SearchHeader from "../../components/headers/SearchHeader";
+import ProductsList from "../../components/productslist/ProductList";
 import RelatedSearches from "../../components/relatedsearches/RelatedSearches";
-import ProductsCard from "../../components/productscard/ProductsCard.jsx";
 import OrderByBar from "../../components/orderbybar/OrderByBar";
-import Pagination from "../../components/pagination/Pagination.jsx";
-import ProductsList from "../../components/productslist/ProductList.jsx";
+import Pagination from "../../components/pagination/Pagination";
 
-import useProducts from "../../hooks/useProducts.js";
+import useProducts from "../../hooks/useProducts";
 
 const Products = ({ authUser, setAuthUser }) => {
+    const [query, setQuery] = useState("");
 
-    const { products, loading } = useProducts();
+    const { products, loading } = useProducts(query);
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-200">
-            <SearchHeader authUser={authUser} setAuthUser={setAuthUser} />
+            <SearchHeader
+                authUser={authUser}
+                setAuthUser={setAuthUser}
+                setQuery={setQuery}
+                onReset={() => setQuery("iphone")}
+            />
 
             <RelatedSearches />
-
             <OrderByBar />
-
             <ProductsList products={products} loading={loading} />
-
             <Pagination />
         </div>
     );

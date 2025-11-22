@@ -1,8 +1,20 @@
 import React from "react";
 
-const SearchBar = () => {
+const SearchBar = ({ setQuery }) => {
+    const [term, setTerm] = React.useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        // Evitar búsquedas vacías, solo espacios, mismos términos
+        if (!term.trim()) return;
+        setQuery(term.trim());
+    };
     return (
-        <div className="flex-1 w-full md:max-w-2xl md:px-4">
+        <form
+            className="flex-1 w-full md:max-w-2xl md:px-4"
+            onSubmit={handleSubmit}
+        >
             <div className="relative">
                 <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg
@@ -20,11 +32,13 @@ const SearchBar = () => {
                 </span>
                 <input
                     type="text"
+                    value={term}
+                    onChange={(e) => setTerm(e.target.value)}
                     placeholder="Buscar productos, marcas y más..."
                     className="w-full input input-bordered border-gray-300 h-12 pl-11 pr-4 focus:outline-none focus:ring-0 focus:border-azulmeli"
                 />
             </div>
-        </div>
+        </form>
     );
 };
 

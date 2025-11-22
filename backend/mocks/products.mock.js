@@ -7,24 +7,6 @@ export const searchResults = {
     },
     results: [
         {
-            id: "MLA112233445",
-            title: "Apple iPhone 15 Plus (512 GB) - Azul",
-            price: 1899999,
-            discount: 17,
-            currency_id: "ARS",
-            condition: "new",
-            thumbnail:
-                "https://http2.mlstatic.com/D_NQ_NP_2X_918178-MLA71783088444_092023-F.webp",
-            shipping: {
-                free_shipping: true,
-            },
-            reviews: {
-                rating_average: 4.5,
-                total: 7,
-                colors: 3,
-            },
-        },
-        {
             id: "MLA123456789",
             title: "Apple iPhone 13 (128 GB) - Medianoche",
             price: 1367999,
@@ -76,6 +58,25 @@ export const searchResults = {
             thumbnail:"https://http2.mlstatic.com/D_NQ_NP_2X_903458-MLA96076060663_102025-F.webp",
             shipping: {
                 free_shipping: true,
+            },
+        },
+        // Producto extra para pruebas de todos los componentes de la tarjeta de producto
+        {
+            id: "MLA112233445",
+            title: "Apple iPhone 15 Plus (512 GB) - Azul",
+            price: 1899999,
+            discount: 17,
+            currency_id: "ARS",
+            condition: "new",
+            thumbnail:
+                "https://http2.mlstatic.com/D_NQ_NP_2X_918178-MLA71783088444_092023-F.webp",
+            shipping: {
+                free_shipping: true,
+            },
+            reviews: {
+                rating_average: 4.5,
+                total: 7,
+                colors: 3,
             },
         },
     ],

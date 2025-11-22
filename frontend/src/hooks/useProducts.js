@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 
 import { normalizeProduct } from "../utils/normalizeProduct";
 
-const useProducts = () => {
+const useProducts = (query) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -12,7 +12,11 @@ const useProducts = () => {
             setLoading(true);
 
             try {
-                const res = await fetch("/api/products/search?q=iphone");
+                // Si no hay query, usar "iphone" por defecto
+                const searchQuery = query || "iphone";
+                const res = await fetch(
+                    `/api/products/search?q=${searchQuery}`
+                );
                 const data = await res.json();
 
                 // Normalizar salida
@@ -22,12 +26,12 @@ const useProducts = () => {
                     ? data.results
                     : [];
 
-                // setProducts(items);
+                // Limitar a 3 productos si es búsqueda por defecto
+                const limitedItems = !query ? items.slice(0, 3) : items;
 
                 // Normalizar productos para que tengan el mismo formato en todas las cards
-                const normalizedProducts = items.map((normalizeProduct));
+                const normalizedProducts = limitedItems.map(normalizeProduct);
                 setProducts(normalizedProducts);
-
             } catch (error) {
                 toast.error("Error al cargar productos", error.message);
             } finally {
@@ -36,7 +40,7 @@ const useProducts = () => {
         };
 
         loadProducts();
-    }, []);
+    }, [query]);
 
     return { products, loading };
 };
