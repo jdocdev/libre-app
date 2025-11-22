@@ -1,23 +1,29 @@
-import {React, useState} from "react";
-import { Link } from "react-router-dom";
+import { React, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import AuthHeader from "../../components/Headers/AuthHeader";
 import useSignup from "../../hooks/useSignup";
 
-const SignUp = () => {
-
+const SignUp = ({ setAuthUser }) => {
+    const navigate = useNavigate();
     const [inputs, setInputs] = useState({
         nombre: "",
         apellido: "",
         usuario: "",
         contrasena: "",
-        confirmarContrasena: ""
+        confirmarContrasena: "",
     });
 
-    const {loading, signup} = useSignup();
+    const { loading, signup } = useSignup();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await signup(inputs);
+
+        const newUser = await signup(inputs);
+
+        if (newUser) {
+            setAuthUser(newUser);
+            navigate("/");
+        }
     };
 
     return (
@@ -45,7 +51,12 @@ const SignUp = () => {
                                     placeholder="Ingresa tu nombre"
                                     className="w-full text-sm input input-bordered border-gray-300 h-12 focus:outline-none focus:ring-0 focus:border-azulmeli"
                                     value={inputs.nombre}
-                                    onChange={(e) => setInputs({...inputs, nombre: e.target.value})}
+                                    onChange={(e) =>
+                                        setInputs({
+                                            ...inputs,
+                                            nombre: e.target.value,
+                                        })
+                                    }
                                 />
                             </div>
 
@@ -61,7 +72,12 @@ const SignUp = () => {
                                     placeholder="Ingresa tu apellido"
                                     className="w-full input input-bordered border-gray-300 h-12 focus:outline-none focus:ring-0 focus:border-azulmeli"
                                     value={inputs.apellido}
-                                    onChange={(e) => setInputs({...inputs, apellido: e.target.value})}
+                                    onChange={(e) =>
+                                        setInputs({
+                                            ...inputs,
+                                            apellido: e.target.value,
+                                        })
+                                    }
                                 />
                             </div>
 
@@ -77,12 +93,20 @@ const SignUp = () => {
                                     placeholder="Elige tu usuario"
                                     className="w-full text-sm input input-bordered border-gray-300 h-12 focus:outline-none focus:ring-0 focus:border-azulmeli"
                                     value={inputs.usuario}
-                                    onChange={(e) => setInputs({...inputs, usuario: e.target.value})}
+                                    onChange={(e) =>
+                                        setInputs({
+                                            ...inputs,
+                                            usuario: e.target.value,
+                                        })
+                                    }
                                 />
                             </div>
 
                             <div>
-                                <label className="label p-2" htmlFor="contrasena">
+                                <label
+                                    className="label p-2"
+                                    htmlFor="contrasena"
+                                >
                                     <span className="text-sm label-text text-gray-700">
                                         Contraseña
                                     </span>
@@ -93,12 +117,20 @@ const SignUp = () => {
                                     placeholder="Crea una contraseña"
                                     className="w-full text-sm input input-bordered border-gray-300 h-12 focus:outline-none focus:ring-0 focus:border-azulmeli"
                                     value={inputs.contrasena}
-                                    onChange={(e) => setInputs({...inputs, contrasena: e.target.value})}
+                                    onChange={(e) =>
+                                        setInputs({
+                                            ...inputs,
+                                            contrasena: e.target.value,
+                                        })
+                                    }
                                 />
                             </div>
 
                             <div>
-                                <label className="label p-2" htmlFor="confirmarContrasena">
+                                <label
+                                    className="label p-2"
+                                    htmlFor="confirmarContrasena"
+                                >
                                     <span className="text-sm label-text text-gray-700">
                                         Confirmar Contraseña
                                     </span>
@@ -109,13 +141,25 @@ const SignUp = () => {
                                     placeholder="Confirma tu contraseña"
                                     className="w-full text-sm input input-bordered border-gray-300 h-12 focus:outline-none focus:ring-0 focus:border-azulmeli"
                                     value={inputs.confirmarContrasena}
-                                    onChange={(e) => setInputs({...inputs, confirmarContrasena: e.target.value})}
+                                    onChange={(e) =>
+                                        setInputs({
+                                            ...inputs,
+                                            confirmarContrasena: e.target.value,
+                                        })
+                                    }
                                 />
                             </div>
 
                             <div>
-                                <button className="btn text-sm bg-azulmeli text-white btn-block btn-md mt-6 border-none hover:bg-azulmeli-dark">
-                                    Crear cuenta
+                                <button
+                                    className="btn text-sm bg-azulmeli text-white btn-block btn-md mt-6 border-none hover:bg-azulmeli-dark"
+                                    disabled={loading}
+                                >
+                                    {loading ? (
+                                        <span className="loading loading-spinner loading-sm"></span>
+                                    ) : (
+                                        "Crear cuenta"
+                                    )}
                                 </button>
                             </div>
 

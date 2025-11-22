@@ -1,10 +1,10 @@
 import React from "react";
 import SearchHeader from "../../components/Headers/Header";
 
-const Home = () => {
+const Home = ({ authUser, setAuthUser }) => {
     return (
         <div className="min-h-screen flex flex-col">
-            <SearchHeader />
+            <SearchHeader authUser={authUser} setAuthUser={setAuthUser} />
 
             <div className="bg-gray-200 py-1 w-full">
                 <div className="max-w-7xl mx-auto px-2 sm:px-4">
