@@ -1,33 +1,48 @@
 import React from "react";
 
 import ProductBadges from "./ProductBadges";
-import ProductRating from "./ProductRating";
+import ProductSeller from "./ProductSeller";
 import ProductPrice from "./ProductPrice";
 
-const ProductsCard = () => {
+const ProductsCard = ({ product }) => {
+
     return (
         <>
             <div className="flex flex-col lg:flex-row items-start gap-6 p-4 sm:p-6 border border-gray-200 bg-white">
                 <img
-                    alt="iPhone 13"
-                    src="https://http2.mlstatic.com/D_NQ_NP_2X_967525-MLA96152875583_102025-F.webp"
+                    alt={product.title}
+                    src={product.thumbnail}
                     className="w-full sm:w-48 lg:w-44 rounded-lg object-cover flex-shrink-0"
                 />
 
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 w-full">
+                    <ProductBadges badges={product.badges} />
 
-                    <ProductBadges />
-
-                    <p className="text-md font-bold text-gray-900">Apple</p>
+                    <p className="text-md font-bold text-gray-900">
+                        {product.brand}
+                    </p>
 
                     <h3 className="text-md text-gray-900">
-                        iPhone 13 (128 GB) - Medianoche - Distribuidor
-                        Autorizado - Distribuidor Autorizado
+                        {product.title}
+                        {product.officialStoreId}
                     </h3>
 
-                    <ProductRating />
+                    <ProductSeller
+                        badges={product.badges}
+                        ratingStars={product.reviews}
+                    />
 
-                    <ProductPrice />
+                    <ProductPrice
+                        priceOriginal={product.price_formatted}
+                        priceWithDiscount={
+                            product.price_with_discount_formatted
+                        }
+                        discount={product.discount}
+                        installments={product.installments}
+                        shipping={product.shipping}
+                        condition={product.condition}
+                        reviews={product.reviews}
+                    />
                 </div>
             </div>
         </>

@@ -1,13 +1,21 @@
 import ProductsCard from "../productscard/ProductsCard";
 
-const ProductsList = () => {
-    const dummyData = [1, 2, 3];
+const ProductsList = ({ products, loading }) => {
+    
+    if (loading) {
+        return (
+
+            <div className="flex-1 flex items-center justify-center bg-gray-200 py-16">
+                <span className="loading loading-spinner loading-lg"></span>
+            </div>
+        );
+    }
 
     return (
         <div className="flex-1 flex justify-center bg-gray-200 py-8">
             <div className="max-w-7xl w-full px-4 sm:px-6 flex flex-col gap-[1px]">
-                {dummyData.map((item, i) => (
-                    <ProductsCard key={i} />
+                {products.map((product, i) => (
+                    <ProductsCard key={i} product={product} />
                 ))}
             </div>
         </div>

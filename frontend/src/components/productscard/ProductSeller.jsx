@@ -1,6 +1,9 @@
 import React from "react";
 
-const ProductRating = () => {
+const ProductSeller = ({ badges }) => {
+    if (!badges?.official_store) return null;
+    // Solo muestra el componente si badges.official_store es true
+
     return (
         <p className="text-sm text-gray-900 flex items-center gap-1">
             Por Apple
@@ -20,4 +23,4 @@ const ProductRating = () => {
     );
 };
 
-export default ProductRating;
+export default ProductSeller;

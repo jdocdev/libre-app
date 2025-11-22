@@ -6,7 +6,12 @@ import OrderByBar from "../../components/orderbybar/OrderByBar";
 import Pagination from "../../components/pagination/Pagination.jsx";
 import ProductsList from "../../components/productslist/ProductList.jsx";
 
+import useProducts from "../../hooks/useProducts.js";
+
 const Products = ({ authUser, setAuthUser }) => {
+
+    const { products, loading } = useProducts();
+
     return (
         <div className="min-h-screen flex flex-col bg-gray-200">
             <SearchHeader authUser={authUser} setAuthUser={setAuthUser} />
@@ -15,7 +20,7 @@ const Products = ({ authUser, setAuthUser }) => {
 
             <OrderByBar />
 
-            <ProductsList />
+            <ProductsList products={products} loading={loading} />
 
             <Pagination />
         </div>

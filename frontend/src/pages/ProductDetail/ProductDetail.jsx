@@ -1,13 +1,14 @@
 import React from "react";
 import SearchHeader from "../../components/headers/Header";
+import RelatedSearches from "../../components/relatedsearches/RelatedSearches";
 
-const ProductDetail = () => {
+const ProductDetail = ({ authUser, setAuthUser }) => {
     return (
-        <div className="min-h-screen flex flex-col">
-            <SearchHeader />
-            <div className="flex-1 flex items-center justify-center bg-gray-200">
-                DETALLES DE PRODUCTO
-            </div>
+        <div className="min-h-screen flex flex-col bg-gray-200">
+            <SearchHeader authUser={authUser} setAuthUser={setAuthUser} />
+
+            <RelatedSearches />
+
         </div>
     );
 };

@@ -25,7 +25,7 @@ const useLogout = (setAuthUser) => {
             // redirigir al login
             navigate("/login");
         } catch (error) {
-            toast.error("Logout error:", error);
+            toast.error("Error al cerrar sesión:", error);
         } finally {
             setLoading(false);
         }
