@@ -41,7 +41,7 @@ const SignUp = ({ setAuthUser }) => {
                         <form onSubmit={handleSubmit}>
                             <div>
                                 <label className="label p-2" htmlFor="nombre">
-                                    <span className="text-sm label-text text-gray-700">
+                                    <span className="text-sm label-text text-gray-700 label-required">
                                         Nombre
                                     </span>
                                 </label>
@@ -62,7 +62,7 @@ const SignUp = ({ setAuthUser }) => {
 
                             <div>
                                 <label className="label p-2" htmlFor="apellido">
-                                    <span className="text-sm label-text text-gray-700">
+                                    <span className="text-sm label-text text-gray-700 label-required">
                                         Apellido
                                     </span>
                                 </label>
@@ -83,7 +83,7 @@ const SignUp = ({ setAuthUser }) => {
 
                             <div>
                                 <label className="label p-2" htmlFor="usuario">
-                                    <span className="text-sm label-text text-gray-700">
+                                    <span className="text-sm label-text text-gray-700 label-required">
                                         Usuario
                                     </span>
                                 </label>
@@ -107,7 +107,7 @@ const SignUp = ({ setAuthUser }) => {
                                     className="label p-2"
                                     htmlFor="contrasena"
                                 >
-                                    <span className="text-sm label-text text-gray-700">
+                                    <span className="text-sm label-text text-gray-700 label-required">
                                         Contraseña
                                     </span>
                                 </label>
@@ -131,7 +131,7 @@ const SignUp = ({ setAuthUser }) => {
                                     className="label p-2"
                                     htmlFor="confirmarContrasena"
                                 >
-                                    <span className="text-sm label-text text-gray-700">
+                                    <span className="text-sm label-text text-gray-700 label-required">
                                         Confirmar Contraseña
                                     </span>
                                 </label>
