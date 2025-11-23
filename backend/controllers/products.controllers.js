@@ -50,28 +50,16 @@ export const obtenerDetalleProducto = async (req, res) => {
     try {
         const { id } = req.params;
 
-        // Buscar el producto por ID en los resultados del mock
-        const productoEncontrado = searchResults.results.find(
-            (producto) => producto.id === id
-        );
-
-        if (!productoEncontrado) {
+        // Solo el producto MLA998877665 tiene detalle completo
+        if (id !== "MLA998877665") {
             return res.status(404).json({
                 error: "Producto no encontrado",
                 message: `No se encontró un producto con el ID: ${id}`,
             });
         }
 
-        // Si se encuentra, devolver el detalle completo
-        const detalle = {
-            ...productDetail,
-            id: productoEncontrado.id,
-            title: productoEncontrado.title,
-            price: productoEncontrado.price,
-            condition: productoEncontrado.condition,
-        };
-
-        res.status(200).json(detalle);
+        // Devolver el detalle completo
+        res.status(200).json(productDetail);
     } catch (error) {
         console.error(
             "Error en el controlador de detalle de producto:",

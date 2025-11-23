@@ -6,45 +6,6 @@ export const searchResults = {
         limit: 3,
     },
     results: [
-        {
-            id: "MLA123456789",
-            title: "Apple iPhone 13 (128 GB) - Medianoche",
-            price: 1367999,
-            currency_id: "ARS",
-            condition: "new",
-            // Imagen original esta rota
-            // thumbnail:
-            //     "https://http2.mlstatic.com/D_123456-MLA0000000000_092023-I.jpg",
-            thumbnail:"https://http2.mlstatic.com/D_NQ_NP_2X_675312-MLA95675194078_102025-F.webp",
-            installments: {
-                quantity: 12,
-                amount: 113999.92,
-            },
-            shipping: {
-                free_shipping: true,
-            },
-            reviews: {
-                rating_average: 4.9,
-                total: 35,
-            },
-        },
-        {
-            id: "MLA987654321",
-            title: "Apple iPhone 16 Pro Max 256gb",
-            thumbnail:"https://http2.mlstatic.com/D_NQ_NP_2X_770795-MLA96870839645_102025-F.webp",
-            price: 2299000,
-            condition: "new",
-        },
-        {
-            id: "MLA555555555",
-            title: "iPhone 8 64 GB Plata - Reacondicionado",
-            price: 412500,
-            condition: "used",
-            reviews: {
-                rating_average: 5.0,
-                total: 2,
-            },
-        },
         // decidi agregar este producto ya que es el que mas tine de detalles y sirve para respresentar mejor la vista de detalle del producto
         {
             id: "MLA998877665",
@@ -55,7 +16,8 @@ export const searchResults = {
             // Imagen original esta rota
             // thumbnail:
             //     "https://http2.mlstatic.com/D_987654-MLA0000000000_092023-I.jpg",
-            thumbnail:"https://http2.mlstatic.com/D_NQ_NP_2X_903458-MLA96076060663_102025-F.webp",
+            thumbnail:
+                "https://http2.mlstatic.com/D_NQ_NP_2X_903458-MLA96076060663_102025-F.webp",
             shipping: {
                 free_shipping: true,
             },
@@ -77,6 +39,47 @@ export const searchResults = {
                 rating_average: 4.5,
                 total: 7,
                 colors: 3,
+            },
+        },
+        {
+            id: "MLA123456789",
+            title: "Apple iPhone 13 (128 GB) - Medianoche",
+            price: 1367999,
+            currency_id: "ARS",
+            condition: "new",
+            // Imagen original esta rota
+            // thumbnail:
+            //     "https://http2.mlstatic.com/D_123456-MLA0000000000_092023-I.jpg",
+            thumbnail:
+                "https://http2.mlstatic.com/D_NQ_NP_2X_675312-MLA95675194078_102025-F.webp",
+            installments: {
+                quantity: 12,
+                amount: 113999.92,
+            },
+            shipping: {
+                free_shipping: true,
+            },
+            reviews: {
+                rating_average: 4.9,
+                total: 35,
+            },
+        },
+        {
+            id: "MLA987654321",
+            title: "Apple iPhone 16 Pro Max 256gb",
+            thumbnail:
+                "https://http2.mlstatic.com/D_NQ_NP_2X_770795-MLA96870839645_102025-F.webp",
+            price: 2299000,
+            condition: "new",
+        },
+        {
+            id: "MLA555555555",
+            title: "iPhone 8 64 GB Plata - Reacondicionado",
+            price: 412500,
+            condition: "used",
+            reviews: {
+                rating_average: 5.0,
+                total: 2,
             },
         },
     ],
