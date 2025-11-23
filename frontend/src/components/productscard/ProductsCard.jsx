@@ -1,14 +1,24 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import ProductBadges from "./ProductBadges";
 import ProductSeller from "./ProductSeller";
 import ProductPrice from "./ProductPrice";
 
 const ProductsCard = ({ product }) => {
+    const navigate = useNavigate();
+
+    // Se utiliza para navegar a la página de detalle del producto al hacer clic en la tarjeta
+    const handleCardClick = () => {
+        navigate(`/product/${product.id}`);
+    };
 
     return (
         <>
-            <div className="flex flex-col lg:flex-row items-start gap-6 p-4 sm:p-6 border border-gray-200 bg-white">
+            <div
+                className="flex flex-col lg:flex-row items-start gap-6 p-4 sm:p-6 border border-gray-200 bg-white cursor-pointer"
+                onClick={handleCardClick}
+            >
                 <img
                     alt={product.title}
                     src={product.thumbnail}
