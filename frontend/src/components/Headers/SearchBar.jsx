@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchBar = ({ setQuery }) => {
+const SearchBar = ({ onSearch }) => {
     const [term, setTerm] = React.useState("");
 
     const handleSubmit = (e) => {
@@ -8,7 +8,7 @@ const SearchBar = ({ setQuery }) => {
 
         // Evitar búsquedas vacías, solo espacios, mismos términos
         if (!term.trim()) return;
-        setQuery(term.trim());
+        onSearch(term.trim());
     };
     return (
         <form

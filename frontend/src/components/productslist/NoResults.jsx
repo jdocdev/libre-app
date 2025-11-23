@@ -22,6 +22,12 @@ const NoResults = () => {
                     <strong>Verifica la ortografía</strong> de tu búsqueda.
                 </li>
             </ul>
+            <a
+                href="/products"
+                className="mt-6 px-6 py-2 bg-none text-azulmeli rounded-md hover:bg-azulmeli-light transition"
+            >
+                Buscar otros productos
+            </a>
         </div>
     );
 };

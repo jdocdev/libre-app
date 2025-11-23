@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React from "react";
 import SearchHeader from "../../components/headers/SearchHeader";
 import ProductsList from "../../components/productslist/ProductList";
 import RelatedSearches from "../../components/relatedsearches/RelatedSearches";
@@ -6,9 +6,10 @@ import OrderByBar from "../../components/orderbybar/OrderByBar";
 import Pagination from "../../components/pagination/Pagination";
 
 import useProducts from "../../hooks/useProducts";
+import useSearch from "../../hooks/useSearch";
 
 const Products = ({ authUser, setAuthUser }) => {
-    const [query, setQuery] = useState("");
+    const { query, onSearch } = useSearch(false, true);
 
     const { products, loading, error } = useProducts(query);
 
@@ -17,8 +18,7 @@ const Products = ({ authUser, setAuthUser }) => {
             <SearchHeader
                 authUser={authUser}
                 setAuthUser={setAuthUser}
-                setQuery={setQuery}
-                onReset={() => setQuery("iphone")}
+                onSearch={onSearch}
             />
 
             <RelatedSearches />
