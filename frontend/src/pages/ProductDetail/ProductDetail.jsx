@@ -1,6 +1,7 @@
 import React from "react";
 import SearchHeader from "../../components/headers/SearchHeader";
 import RelatedSearches from "../../components/relatedsearches/RelatedSearches";
+import ProductDetailContent from "../../components/productdetail/ProductDetailContent";
 
 const ProductDetail = ({ authUser, setAuthUser }) => {
     return (
@@ -8,6 +9,8 @@ const ProductDetail = ({ authUser, setAuthUser }) => {
             <SearchHeader authUser={authUser} setAuthUser={setAuthUser} />
 
             <RelatedSearches />
+
+            <ProductDetailContent />
         </div>
     );
 };
