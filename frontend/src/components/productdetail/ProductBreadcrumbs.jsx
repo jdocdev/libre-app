@@ -1,6 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProductBreadcrumbs = () => {
+    const navigate = useNavigate();
+
+    const breadcrumbs = [
+        { label: "Celulares y Teléfonos", query: "iphone" },
+        { label: "Celulares y Smartphones", query: "iphone" },
+        { label: "Apple iPhone", query: "iphone" },
+    ];
+
+    const handleBreadcrumbClick = (query) => {
+        navigate(`/products?q=${encodeURIComponent(query)}`);
+    };
+
     return (
         <div className="w-full py-2">
             <div className="max-w-7xl mx-auto px-2 sm:px-4">
@@ -16,21 +29,17 @@ const ProductBreadcrumbs = () => {
 
                     <div className="breadcrumbs">
                         <ul className="flex items-center gap-1">
-                            <li>
-                                <a className="hover:underline cursor-pointer text-azulmeli">
-                                    Celulares y Teléfonos
-                                </a>
-                            </li>
-                            <li>
-                                <a className="hover:underline cursor-pointer text-azulmeli">
-                                    Celulares y Smartphones
-                                </a>
-                            </li>
-                            <li>
-                                <a className="hover:underline cursor-pointer text-azulmeli">
-                                    Apple iPhone
-                                </a>
-                            </li>
+                            {breadcrumbs.map((crumb, index) => (
+                                <li key={index} className="flex items-center gap-1">
+                                    {index > 0 && <span className="text-gray-400"></span>}
+                                    <a
+                                        className="hover:underline cursor-pointer text-azulmeli"
+                                        onClick={() => handleBreadcrumbClick(crumb.query)}
+                                    >
+                                        {crumb.label}
+                                    </a>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>
