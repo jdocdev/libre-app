@@ -36,14 +36,20 @@ const ProductDetailContent = ({ product, loading, error }) => {
             <div className="max-w-7xl mx-auto px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                     <div className="lg:col-span-2 bg-white p-6 rounded-lg">
-                        <ImageGallery />
-                        <ProductDescription />
-                        <ProductAttributes />
+                        <ImageGallery
+                            pictures={product.pictures}
+                            title={product.title}
+                        />
+
+                        <ProductDescription description={product.description} />
+
+                        <ProductAttributes attributes={product.attributes} />
                     </div>
 
                     <div className="lg:col-span-1 bg-white p-6 rounded-lg top-4">
-                        <ProductInfo />
-                        <PurchaseBox />
+                        <ProductInfo product={product} />
+
+                        <PurchaseBox product={product} />
                     </div>
                 </div>
             </div>

@@ -45,7 +45,7 @@ const Login = ({ setAuthUser }) => {
                                     id="usuario"
                                     type="text"
                                     placeholder="Ingresa tu usuario"
-                                    className="w-full input input-bordered border-gray-300 h-12"
+                                    className="w-full input input-bordered border-gray-300 h-12 focus:outline-none focus:ring-0 focus:border-azulmeli"
                                     value={usuario}
                                     onChange={(e) => setUsuario(e.target.value)}
                                 />
@@ -64,7 +64,7 @@ const Login = ({ setAuthUser }) => {
                                     id="contrasena"
                                     type="password"
                                     placeholder="Ingresa tu contraseña"
-                                    className="w-full input input-bordered border-gray-300 h-12"
+                                    className="w-full input input-bordered border-gray-300 h-12 focus:outline-none focus:ring-0 focus:border-azulmeli"
                                     value={contrasena}
                                     onChange={(e) =>
                                         setContrasena(e.target.value)

@@ -96,13 +96,29 @@ export const productDetail = {
     condition: "new",
     permalink: "https://www.mercadolibre.com.ar/p/MLA998877665",
     pictures: [
+        // {
+        //     id: "1",
+        //     url: "https://http2.mlstatic.com/D_987654-MLA0000000000_092023-I.jpg",
+        // },
+        // {
+        //     id: "2",
+        //     url: "https://http2.mlstatic.com/D_987655-MLA0000000001_092023-I.jpg",
+        // },
         {
             id: "1",
-            url: "https://http2.mlstatic.com/D_987654-MLA0000000000_092023-I.jpg",
+            url: "https://http2.mlstatic.com/D_NQ_NP_2X_777801-MLA96651066765_102025-F.webp",
         },
         {
             id: "2",
-            url: "https://http2.mlstatic.com/D_987655-MLA0000000001_092023-I.jpg",
+            url: "https://http2.mlstatic.com/D_NQ_NP_2X_762289-MLA80663863823_112024-F.webp",
+        },
+        {
+            id: "3",
+            url: "https://http2.mlstatic.com/D_NQ_NP_2X_854318-MLA80663863827_112024-F.webp",
+        },
+        {
+            id: "4",
+            url: "https://http2.mlstatic.com/D_NQ_NP_2X_615689-MLA80664076957_112024-F.webp",
         },
     ],
     installments: {

@@ -5,23 +5,31 @@ import StockDetail from "./StockDetail";
 import ButtonsDetail from "./ButtonsDetail";
 import WarrantyDetail from "./WarrantyDetail";
 
-const PurchaseBox = () => {
+const PurchaseBox = ({ product }) => {
     return (
         <div>
             {/* Precios */}
-            <ProductPriceDetail />
+            <ProductPriceDetail
+                originalPriceFormatted={product.original_price_formatted}
+                priceFormatted={product.price_formatted}
+                discount={product.discount}
+                installments={product.installments}
+            />
 
             {/* Envío Gratis */}
-            <FreeShippingDetail />
+            <FreeShippingDetail
+                shipping={product.shipping}
+                sellerAddress={product.seller_address}
+            />
 
             {/* Stock */}
-            <StockDetail />
+            <StockDetail availableQuantity={product.available_quantity} />
 
             {/* Botones de compra */}
             <ButtonsDetail />
 
             {/* Garantía */}
-            <WarrantyDetail />
+            <WarrantyDetail warranty={product.warranty} />
         </div>
     );
 };

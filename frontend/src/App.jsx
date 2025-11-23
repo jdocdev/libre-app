@@ -65,7 +65,7 @@ function App() {
 
                 <Route
                     path="/product/:id"
-                    element={<ProductDetail authUser={authUser} />}
+                    element={<ProductDetail authUser={authUser} setAuthUser={setAuthUser}/>}
                 />
 
                 <Route
