@@ -2,7 +2,7 @@ import { searchResults, productDetail } from "../mocks/products.mock.js";
 
 export const buscarProductos = async (req, res) => {
     try {
-        const { q } = req.query;
+        const { q, offset = 0, limit = 2 } = req.query;
 
         if (!q) {
             return res
@@ -21,22 +21,28 @@ export const buscarProductos = async (req, res) => {
                 query: q,
                 paging: {
                     total: 0,
-                    offset: 0,
-                    limit: 0,
+                    offset: parseInt(offset),
+                    limit: parseInt(limit),
                 },
                 results: [],
                 message: "No se encontraron resultados para tu búsqueda",
             });
         }
 
+        // Aplicar paginación
+        const paginatedResults = resultadosFiltrados.slice(
+            parseInt(offset),
+            parseInt(offset) + parseInt(limit)
+        );
+
         const resultados = {
             query: q,
             paging: {
-                ...searchResults.paging,
                 total: resultadosFiltrados.length,
-                limit: resultadosFiltrados.length,
+                offset: parseInt(offset),
+                limit: parseInt(limit),
             },
-            results: resultadosFiltrados,
+            results: paginatedResults,
         };
 
         res.status(200).json(resultados);

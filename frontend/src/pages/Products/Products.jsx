@@ -9,9 +9,9 @@ import useProducts from "../../hooks/useProducts";
 import useSearch from "../../hooks/useSearch";
 
 const Products = ({ authUser, setAuthUser }) => {
-    const { query, onSearch } = useSearch(false, true);
+    const { query, offset, limit, onSearch, onPageChange } = useSearch(false, true);
 
-    const { products, loading, error } = useProducts(query);
+    const { products, loading, error, paging } = useProducts(query, offset, limit);
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-200">
@@ -24,7 +24,11 @@ const Products = ({ authUser, setAuthUser }) => {
             <RelatedSearches />
             <OrderByBar />
             <ProductsList products={products} loading={loading} error={error} />
-            <Pagination />
+            <Pagination
+                currentPage={Math.floor(offset / limit) + 1}
+                totalPages={Math.ceil(paging.total / limit)}
+                onPageChange={(page) => onPageChange((page - 1) * limit)}
+            />
         </div>
     );
 };

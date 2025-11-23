@@ -2,10 +2,11 @@ import { React, useEffect, useState } from "react";
 
 import { normalizeProduct } from "../utils/normalizeProduct";
 
-const useProducts = (query) => {
+const useProducts = (query, offset = 0, limit = 2) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+    const [paging, setPaging] = useState({ total: 0, offset: 0, limit: 2 });
 
     useEffect(() => {
         const loadProducts = async () => {
@@ -16,7 +17,7 @@ const useProducts = (query) => {
                 // Si no hay query, usar "iphone" por defecto
                 const searchQuery = query || "iphone";
                 const res = await fetch(
-                    `/api/products/search?q=${searchQuery}`
+                    `/api/products/search?q=${searchQuery}&offset=${offset}&limit=${limit}`
                 );
                 const data = await res.json();
 
@@ -27,24 +28,23 @@ const useProducts = (query) => {
                     ? data.results
                     : [];
 
-                // Limitar a 3 productos si es búsqueda por defecto
-                const limitedItems = !query ? items.slice(0, 3) : items;
-
                 // Normalizar productos para que tengan el mismo formato en todas las cards
-                const normalizedProducts = limitedItems.map(normalizeProduct);
+                const normalizedProducts = items.map(normalizeProduct);
                 setProducts(normalizedProducts);
+                setPaging(data.paging || { total: 0, offset: 0, limit: 2 });
             } catch {
                 setError(true);
                 setProducts([]);
+                setPaging({ total: 0, offset: 0, limit: 2 });
             } finally {
                 setLoading(false);
             }
         };
 
         loadProducts();
-    }, [query]);
+    }, [query, offset, limit]);
 
-    return { products, loading, error };
+    return { products, loading, error, paging };
 };
 
 export default useProducts;
