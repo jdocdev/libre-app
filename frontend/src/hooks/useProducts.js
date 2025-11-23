@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 
 import { normalizeProduct } from "../utils/normalizeProduct";
 
-const useProducts = (query, offset = 0, limit = 2) => {
+const useProducts = (query, offset = 0, limit = 2, sort = 'relevance') => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -17,7 +17,7 @@ const useProducts = (query, offset = 0, limit = 2) => {
                 // Si no hay query, usar "iphone" por defecto
                 const searchQuery = query || "iphone";
                 const res = await fetch(
-                    `/api/products/search?q=${searchQuery}&offset=${offset}&limit=${limit}`
+                    `/api/products/search?q=${searchQuery}&offset=${offset}&limit=${limit}&sort=${sort}`
                 );
                 const data = await res.json();
 
@@ -42,7 +42,7 @@ const useProducts = (query, offset = 0, limit = 2) => {
         };
 
         loadProducts();
-    }, [query, offset, limit]);
+    }, [query, offset, limit, sort]);
 
     return { products, loading, error, paging };
 };

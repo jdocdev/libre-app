@@ -2,7 +2,7 @@ import { searchResults, productDetail } from "../mocks/products.mock.js";
 
 export const buscarProductos = async (req, res) => {
     try {
-        const { q, offset = 0, limit = 2 } = req.query;
+        const { q, offset = 0, limit = 2, sort = 'relevance' } = req.query;
 
         if (!q) {
             return res
@@ -29,8 +29,23 @@ export const buscarProductos = async (req, res) => {
             });
         }
 
+        // Aplicar ordenamiento
+        let resultadosOrdenados = [...resultadosFiltrados];
+        switch (sort) {
+            case 'price_asc':
+                resultadosOrdenados.sort((a, b) => a.price - b.price);
+                break;
+            case 'price_desc':
+                resultadosOrdenados.sort((a, b) => b.price - a.price);
+                break;
+            case 'relevance':
+            default:
+                // Mantener el orden original para relevancia
+                break;
+        }
+
         // Aplicar paginación
-        const paginatedResults = resultadosFiltrados.slice(
+        const paginatedResults = resultadosOrdenados.slice(
             parseInt(offset),
             parseInt(offset) + parseInt(limit)
         );
@@ -38,7 +53,7 @@ export const buscarProductos = async (req, res) => {
         const resultados = {
             query: q,
             paging: {
-                total: resultadosFiltrados.length,
+                total: resultadosOrdenados.length,
                 offset: parseInt(offset),
                 limit: parseInt(limit),
             },

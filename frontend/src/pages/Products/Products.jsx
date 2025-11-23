@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchHeader from "../../components/headers/SearchHeader";
 import ProductsList from "../../components/productslist/ProductList";
 import RelatedSearches from "../../components/relatedsearches/RelatedSearches";
@@ -10,8 +10,9 @@ import useSearch from "../../hooks/useSearch";
 
 const Products = ({ authUser, setAuthUser }) => {
     const { query, offset, limit, onSearch, onPageChange } = useSearch(false, true);
+    const [sort, setSort] = useState('relevance');
 
-    const { products, loading, error, paging } = useProducts(query, offset, limit);
+    const { products, loading, error, paging } = useProducts(query, offset, limit, sort);
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-200">
@@ -22,7 +23,7 @@ const Products = ({ authUser, setAuthUser }) => {
             />
 
             <RelatedSearches />
-            <OrderByBar />
+            <OrderByBar sort={sort} onSortChange={setSort} />
             <ProductsList products={products} loading={loading} error={error} />
             <Pagination
                 currentPage={Math.floor(offset / limit) + 1}
