@@ -1,13 +1,18 @@
 import ProductsCard from "../productscard/ProductsCard";
 import NoResults from "./NoResults";
+import ServerError from "./ServerError";
 
-const ProductsList = ({ products, loading }) => {
+const ProductsList = ({ products, loading, error }) => {
     if (loading) {
         return (
             <div className="flex-1 flex items-center justify-center bg-gray-200 py-16">
                 <span className="loading loading-spinner loading-lg"></span>
             </div>
         );
+    }
+
+    if (error) {
+        return <ServerError />;
     }
 
     if (!products || products.length === 0) {

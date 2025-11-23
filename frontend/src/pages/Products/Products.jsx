@@ -10,7 +10,7 @@ import useProducts from "../../hooks/useProducts";
 const Products = ({ authUser, setAuthUser }) => {
     const [query, setQuery] = useState("");
 
-    const { products, loading } = useProducts(query);
+    const { products, loading, error } = useProducts(query);
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-200">
@@ -23,7 +23,7 @@ const Products = ({ authUser, setAuthUser }) => {
 
             <RelatedSearches />
             <OrderByBar />
-            <ProductsList products={products} loading={loading} />
+            <ProductsList products={products} loading={loading} error={error} />
             <Pagination />
         </div>
     );

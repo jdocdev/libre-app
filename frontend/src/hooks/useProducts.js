@@ -1,15 +1,16 @@
 import { React, useEffect, useState } from "react";
-import toast from "react-hot-toast";
 
 import { normalizeProduct } from "../utils/normalizeProduct";
 
 const useProducts = (query) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         const loadProducts = async () => {
             setLoading(true);
+            setError(false);
 
             try {
                 // Si no hay query, usar "iphone" por defecto
@@ -32,8 +33,9 @@ const useProducts = (query) => {
                 // Normalizar productos para que tengan el mismo formato en todas las cards
                 const normalizedProducts = limitedItems.map(normalizeProduct);
                 setProducts(normalizedProducts);
-            } catch (error) {
-                toast.error("Error al cargar productos", error.message);
+            } catch {
+                setError(true);
+                setProducts([]);
             } finally {
                 setLoading(false);
             }
@@ -42,7 +44,7 @@ const useProducts = (query) => {
         loadProducts();
     }, [query]);
 
-    return { products, loading };
+    return { products, loading, error };
 };
 
 export default useProducts;
