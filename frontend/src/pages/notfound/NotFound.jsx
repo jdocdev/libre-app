@@ -1,9 +1,9 @@
-import Header from "../../components/headers/SearchHeader";
+import SearchHeader from "../../components/headers/SearchHeader";
 
 const NotFound = ({ authUser, setAuthUser }) => {
     return (
         <>
-            <Header authUser={authUser} setAuthUser={setAuthUser} />
+            <SearchHeader authUser={authUser} setAuthUser={setAuthUser} />
 
             <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
                 <div className="mb-6">
