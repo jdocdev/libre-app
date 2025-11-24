@@ -3,15 +3,17 @@ Aplicación web full-stack inspirada en Mercado Libre, desarrollada como prueba 
 
 ## Tabla de Contenidos
 
-- [Características](#-características)
-- [Tecnologías Utilizadas](#-tecnologías-utilizadas)
-- [Requisitos Previos](#-requisitos-previos)
-- [Instalación](#-instalación)
-- [Configuración](#-configuración)
-- [Ejecución](#-ejecución)
-- [Estructura del Proyecto](#-estructura-del-proyecto)
-- [Decisiones Técnicas](#-decisiones-técnicas-destacadas)
-- [API Endpoints](#-api-endpoints)
+- [Características](#características)
+- [Tecnologías Utilizadas](#tecnologías-utilizadas)
+- [Requisitos Previos](#requisitos-previos)
+- [Instalación](#instalación)
+- [Configuración](#configuración)
+- [Ejecución](#ejecución)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Decisiones Técnicas Destacadas](#decisiones-técnicas-destacadas)
+- [API Endpoints](#api-endpoints)
+- [Licencia](#licencia)
+- [Autor](#autor)
 
 ## Características
 
@@ -161,7 +163,7 @@ npm run build
 
 Los archivos optimizados se generarán en `frontend/dist/`
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 libre-app/
