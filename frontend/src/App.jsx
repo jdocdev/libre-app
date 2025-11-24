@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 
 import Products from "./pages/products/Products.jsx";
-import Login from "./pages/login/login.jsx";
+import Login from "./pages/login/Login.jsx";
 import SignUp from "./pages/signup/SignUp.jsx";
 import ProductDetail from "./pages/productdetail/ProductDetail.jsx";
 import NotFound from "./pages/notfound/NotFound.jsx";
