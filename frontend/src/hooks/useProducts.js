@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import { getApiUrl } from "../config/api";
 
 import { normalizeProduct } from "../utils/normalizeProduct";
 
@@ -17,7 +18,7 @@ const useProducts = (query, offset = 0, limit = 2, sort = 'relevance') => {
                 // Si no hay query, usar "iphone" por defecto
                 const searchQuery = query || "iphone";
                 const res = await fetch(
-                    `/api/products/search?q=${searchQuery}&offset=${offset}&limit=${limit}&sort=${sort}`
+                    getApiUrl(`/products/search?q=${searchQuery}&offset=${offset}&limit=${limit}&sort=${sort}`)
                 );
                 const data = await res.json();
 

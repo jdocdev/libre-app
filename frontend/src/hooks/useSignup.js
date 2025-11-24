@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import toast from "react-hot-toast";
+import { getApiUrl } from "../config/api";
 
 import { passwordRegex } from "../utils/validators.js";
 
@@ -25,7 +26,7 @@ const useSignup = () => {
 
         setLoading(true);
         try {
-            const res = await fetch("/api/auth/signup", {
+            const res = await fetch(getApiUrl("/auth/signup"), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -35,6 +36,7 @@ const useSignup = () => {
                     contrasena: contrasena,
                     confirmacionContrasena: confirmarContrasena,
                 }),
+                credentials: "include",
             });
 
             const data = await res.json();

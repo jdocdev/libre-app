@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getApiUrl } from "../config/api";
 
 import toast from "react-hot-toast";
 
@@ -11,9 +12,10 @@ const useLogout = (setAuthUser) => {
         setLoading(true);
 
         try {
-            await fetch("/api/auth/logout", {
+            await fetch(getApiUrl("/auth/logout"), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
+                credentials: "include",
             });
 
             // limpiar frontend
