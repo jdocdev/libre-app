@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getApiUrl } from "../config/api";
 import { normalizeProductDetail } from "../utils/normaliceProductDetail";
 
 const useProductDetail = (id) => {
@@ -18,7 +19,7 @@ const useProductDetail = (id) => {
             setError(false);
 
             try {
-                const res = await fetch(`/api/products/items/${id}`);
+                const res = await fetch(getApiUrl(`/products/items/${id}`));
 
                 if (!res.ok) {
                     setError(true);
