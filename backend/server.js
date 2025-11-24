@@ -16,11 +16,13 @@ const PORT = process.env.PORT || 5000;
 const allowedOrigins = [
     "http://localhost:3000", // Desarrollo local
     "http://localhost:5000", // Backend local
-    process.env.FRONTEND_URL || "", // Variable de entorno para Netlify
+    "https://jdocdev-libre-app.netlify.app", // Netlify producción
+    process.env.FRONTEND_URL || "", // Variable de entorno adicional
 ];
 
 app.use(cors({
     origin: (origin, callback) => {
+        // Permitir peticiones sin origin (Postman, apps móviles, etc.) o de orígenes permitidos
         if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
