@@ -20,8 +20,8 @@ const OrderByBar = ({ sort, onSortChange }) => {
 
     return (
         <div className="bg-gray-200 py-3 w-full">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                <div className="hidden sm:flex items-center justify-end">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-end">
+                <div className="sm:flex items-center justify-end">
                     <div className="relative">
                         <button
                             type="button"
