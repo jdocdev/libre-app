@@ -3,11 +3,11 @@ import { getApiUrl } from "../config/api";
 
 import { normalizeProduct } from "../utils/normalizeProduct";
 
-const useProducts = (query, offset = 0, limit = 2, sort = "relevance") => {
+const useProducts = (query, offset = 0, limit = 3, sort = "relevance") => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
-    const [paging, setPaging] = useState({ total: 0, offset: 0, limit: 2 });
+    const [paging, setPaging] = useState({ total: 0, offset: 0, limit: 3 });
 
     useEffect(() => {
         const loadProducts = async () => {
@@ -34,11 +34,11 @@ const useProducts = (query, offset = 0, limit = 2, sort = "relevance") => {
                 // Normalizar productos para que tengan el mismo formato en todas las cards
                 const normalizedProducts = items.map(normalizeProduct);
                 setProducts(normalizedProducts);
-                setPaging(data.paging || { total: 0, offset: 0, limit: 2 });
+                setPaging(data.paging || { total: 0, offset: 0, limit: 3 });
             } catch {
                 setError(true);
                 setProducts([]);
-                setPaging({ total: 0, offset: 0, limit: 2 });
+                setPaging({ total: 0, offset: 0, limit: 3 });
             } finally {
                 setLoading(false);
             }

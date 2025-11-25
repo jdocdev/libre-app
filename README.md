@@ -338,7 +338,7 @@ const userSchema = new mongoose.Schema({
 
 #### 14. **Paginación del lado del servidor**
 ```javascript
-const { q, offset = 0, limit = 2 } = req.query;
+const { q, offset = 0, limit = 3 } = req.query;
 ```
 - **Decisión:** Implementar paginación en el backend con offset/limit
 - **Razón:** Optimizar transferencia de datos, especialmente con muchos resultados

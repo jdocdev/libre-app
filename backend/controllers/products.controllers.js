@@ -2,7 +2,7 @@ import { searchResults, productDetail } from "../mocks/products.mock.js";
 
 export const buscarProductos = async (req, res) => {
     try {
-        const { q, offset = 0, limit = 2, sort = 'relevance' } = req.query;
+        const { q, offset = 0, limit = 3, sort = "relevance" } = req.query;
 
         if (!q) {
             return res
@@ -32,13 +32,13 @@ export const buscarProductos = async (req, res) => {
         // Aplicar ordenamiento
         let resultadosOrdenados = [...resultadosFiltrados];
         switch (sort) {
-            case 'price_asc':
+            case "price_asc":
                 resultadosOrdenados.sort((a, b) => a.price - b.price);
                 break;
-            case 'price_desc':
+            case "price_desc":
                 resultadosOrdenados.sort((a, b) => b.price - a.price);
                 break;
-            case 'relevance':
+            case "relevance":
             default:
                 // Mantener el orden original para relevancia
                 break;
@@ -70,17 +70,15 @@ export const buscarProductos = async (req, res) => {
 export const obtenerDetalleProducto = async (req, res) => {
     try {
         const { id } = req.params;
-
-        // Solo el producto MLA998877665 tiene detalle completo
-        if (id !== "MLA998877665") {
+        const detalle = productDetail[id];
+        if (!detalle) {
             return res.status(404).json({
                 error: "Producto no encontrado",
                 message: `No se encontró un producto con el ID: ${id}`,
             });
         }
-
-        // Devolver el detalle completo
-        res.status(200).json(productDetail);
+        // Devolver solo el detalle correspondiente
+        res.status(200).json(detalle);
     } catch (error) {
         console.error(
             "Error en el controlador de detalle de producto:",

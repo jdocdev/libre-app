@@ -5,7 +5,7 @@ const useSearch = (navigateOnSearch = false, readFromUrl = false) => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [query, setQuery] = useState(readFromUrl ? searchParams.get('q') || '' : '');
     const [offset, setOffset] = useState(parseInt(searchParams.get('offset')) || 0);
-    const [limit] = useState(2); // Fijo en 2 productos por página
+    const [limit] = useState(3); // Fijo en 3 productos por página
 
     const navigate = useNavigate();
 
