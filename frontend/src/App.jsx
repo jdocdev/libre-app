@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 import Products from "./pages/products/Products.jsx";
 import Login from "./pages/login/Login.jsx";
 import SignUp from "./pages/signup/SignUp.jsx";
+import Profile from "./pages/profile/Profile.jsx";
 import ProductDetail from "./pages/productdetail/ProductDetail.jsx";
 import NotFound from "./pages/notfound/NotFound.jsx";
 
@@ -64,8 +65,27 @@ function App() {
                 />
 
                 <Route
+                    path="/profile"
+                    element={
+                        authUser ? (
+                            <Profile
+                                authUser={authUser}
+                                setAuthUser={setAuthUser}
+                            />
+                        ) : (
+                            <Navigate to="/signup" />
+                        )
+                    }
+                />
+
+                <Route
                     path="/product/:id"
-                    element={<ProductDetail authUser={authUser} setAuthUser={setAuthUser}/>}
+                    element={
+                        <ProductDetail
+                            authUser={authUser}
+                            setAuthUser={setAuthUser}
+                        />
+                    }
                 />
 
                 <Route

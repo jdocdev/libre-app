@@ -40,22 +40,24 @@ const UserSection = ({ authUser, setAuthUser }) => {
                     </div>
 
                     <div className="avatar relative">
-                        <div className="sm:w-12 w-11 rounded-full border border-white/50 relative">
-                            {loadingAvatar && (
-                                <div className="absolute inset-0 flex items-center justify-center bg-gray-200 rounded-full">
-                                    <span className="loading loading-spinner loading-sm"></span>
-                                </div>
-                            )}
-                            <img
-                                src={
-                                    authUser.imagenUsuario ||
-                                    "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                                }
-                                alt="Avatar del usuario"
-                                onLoad={() => setLoadingAvatar(false)}
-                                onError={() => setLoadingAvatar(false)}
-                            />
-                        </div>
+                        <Link to="/profile">
+                            <div className="sm:w-12 w-11 rounded-full border border-white/50 relative cursor-pointer">
+                                {loadingAvatar && (
+                                    <div className="absolute inset-0 flex items-center justify-center bg-gray-200 rounded-full">
+                                        <span className="loading loading-spinner loading-sm"></span>
+                                    </div>
+                                )}
+                                <img
+                                    src={
+                                        authUser.imagenUsuario ||
+                                        "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                                    }
+                                    alt="Avatar del usuario"
+                                    onLoad={() => setLoadingAvatar(false)}
+                                    onError={() => setLoadingAvatar(false)}
+                                />
+                            </div>
+                        </Link>
                     </div>
                 </>
             )}
