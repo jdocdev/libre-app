@@ -4,11 +4,18 @@ import ProfileCard from "../../components/profile/ProfileCard";
 import ProfileHeader from "../../components/profile/ProfileHeader";
 import ProfileCancelAccount from "../../components/profile/ProfileCancelAccount";
 import { profileCards } from "../../utils/profileData.jsx";
+import useSearch from "../../hooks/useSearch";
 
 const Profile = ({ authUser, setAuthUser }) => {
+    const { onSearch } = useSearch(true);
+
     return (
         <div className="min-h-screen flex flex-col">
-            <SearchHeader authUser={authUser} setAuthUser={setAuthUser} />
+            <SearchHeader
+                authUser={authUser}
+                setAuthUser={setAuthUser}
+                onSearch={onSearch}
+            />
             <div className="flex-1 flex justify-center bg-gray-200 py-8">
                 <div className="max-w-6xl w-full px-4 sm:px-6 flex flex-col gap-8">
                     <ProfileHeader
