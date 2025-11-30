@@ -17,6 +17,8 @@ const allowedOrigins = [
     "http://localhost:3000", // Desarrollo local
     "http://localhost:5000", // Backend local
     "https://jdocdev-libre-app.netlify.app", // Netlify producción
+    "https://libre-app-backend.pruebasjdoc.me",
+    "http://libre-app-backend.pruebasjdoc.me", 
     process.env.FRONTEND_URL || "",
 ];
 
